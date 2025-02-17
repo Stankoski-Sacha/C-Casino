@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace C__Casino
+namespace C__Casino.code
 {
     class Blackjack
     {
@@ -16,7 +16,7 @@ namespace C__Casino
             while (true)
             {
                 Console.WriteLine("Would you like to play? (Yes/No)");
-                String action = Console.ReadLine().ToLower().Trim();
+                string action = Console.ReadLine().ToLower().Trim();
                 switch (action)
                 {
                     case "yes":
@@ -53,7 +53,7 @@ namespace C__Casino
             }
 
             Console.WriteLine("Hit or Stand?");
-            String action = Console.ReadLine();
+            string action = Console.ReadLine();
 
             
             while (total < 22)
@@ -79,6 +79,11 @@ namespace C__Casino
                             Console.WriteLine("You won!");
                             break;
                         }
+                        else if (total == dealer)
+                        {
+                            Console.WriteLine("It's a tie! You get back your tokens");
+                            break;
+                        }
                         else
                         {
                             Console.WriteLine("You lost!");
@@ -87,6 +92,8 @@ namespace C__Casino
                         }
                     default:
                         Console.WriteLine("Invalid action. Please try again.");
+                        Console.WriteLine("Hit or Stand?");
+                        action = Console.ReadLine();
                         break;
                 }
             }
