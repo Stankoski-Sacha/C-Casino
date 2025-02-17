@@ -53,14 +53,14 @@ namespace C__Casino.code
             }
 
             Console.WriteLine("Hit or Stand?");
-            string action = Console.ReadLine();
+            string action = Console.ReadLine().Trim().ToLower();
 
             
             while (total < 22)
             {
                 switch (action)
                 {
-                    case "Hit":
+                    case "hit":
                         card = ran.Next(1, 11);
                         total += card;
                         Console.WriteLine("Your total is: " + total);
@@ -72,16 +72,18 @@ namespace C__Casino.code
                         Console.WriteLine("Hit or Stand?");
                         action = Console.ReadLine();
                         break;
-                    case "Stand":
+                    case "stand":
                         Console.WriteLine("Dealer total is: " + dealer);
                         if (total > dealer)
                         {
                             Console.WriteLine("You won!");
+                            total += 100;
                             break;
                         }
                         else if (total == dealer)
                         {
                             Console.WriteLine("It's a tie! You get back your tokens");
+                            total += 100;
                             break;
                         }
                         else

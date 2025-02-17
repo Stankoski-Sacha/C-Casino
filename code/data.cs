@@ -16,7 +16,6 @@ namespace C__Casino.code
         }
 
         private static int tokens = 0;
-
         public static int Tokens
         {
             get { return tokens; }

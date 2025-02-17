@@ -18,17 +18,17 @@ namespace C__Casino.code
                 Console.WriteLine("1. Blackjack");
                 Console.WriteLine("5. Balance");
                 Console.WriteLine("6. Exit"); 
-                int action = int.Parse(Console.ReadLine());
+                String action = Console.ReadLine().ToLower().Trim();
 
-                if (action == 6) break;
+                if (action == "6") break;
 
                 switch (action)
                 {
-                    case 1:
+                    case "1":
                         Blackjack blackjack = new Blackjack();
                         blackjack.main();
                         break;
-                    case 5:
+                    case "5":
                         Console.WriteLine("Your balance is: " + data.Balance);
                         break;
                     default:
