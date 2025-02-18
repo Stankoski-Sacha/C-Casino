@@ -20,7 +20,14 @@ namespace C__Casino.code
                 switch (action)
                 {
                     case "yes":
-                        play();
+                        Console.WriteLine("How much tokens would you like to bet?");
+                        int bet = int.Parse(Console.ReadLine());
+                        if (bet > data.Tokens)
+                        {
+                            Console.WriteLine("You do not have enough tokens.");
+                            break;
+                        }
+                        play(bet);
                         break;
                     case "no":
                         Menu menu = new Menu();
@@ -33,7 +40,7 @@ namespace C__Casino.code
             }
         }
 
-        static void play()
+        static void play(int bet)
         {
             Random ran = new Random();
 
@@ -49,13 +56,15 @@ namespace C__Casino.code
 
             if (total == 21)
             {
-                Console.WriteLine("You won"); 
+                Console.WriteLine("You won");
+                total+= 100;
+                data.Tokens += (bet * 3);
             }
 
             Console.WriteLine("Hit or Stand?");
             string action = Console.ReadLine().Trim().ToLower();
 
-            
+
             while (total < 22)
             {
                 switch (action)
@@ -67,6 +76,13 @@ namespace C__Casino.code
                         if (total > 21)
                         {
                             Console.WriteLine("You busted!");
+                            break;
+                        }
+                        else if (total == 21)
+                        {
+                            Console.WriteLine("You won!");
+                            total += 100;
+                            data.Tokens += (bet * 2);
                             break;
                         }
                         Console.WriteLine("Hit or Stand?");

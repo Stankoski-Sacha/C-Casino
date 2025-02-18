@@ -19,19 +19,41 @@ namespace C__Casino.code
             switch (action)
             {
                 case "1":
-                    Console.WriteLine("How many ? 1 Token = 10 money");
-                    int amount = int.Parse(Console.ReadLine());
-                    if (money < amount)
-                    {
-                        Console.WriteLine("You do not have enough money.");
-                    }
-                    else
-                    {
-                        data.Balance -= amount;
-                        data.Tokens += amount / 10;
-                    }
+                    convertTokens(money);
                     break;
+                case "2":
+                    convertMoney(tokens);
+                    break;
+            }
+        }
 
+        static void convertTokens(int money)
+        {
+            Console.WriteLine("How many ? 1 Token = 10 money");
+            int amount = int.Parse(Console.ReadLine());
+            if (money < amount)
+            {
+                Console.WriteLine("You do not have enough money.");
+            }
+            else
+            {
+                data.Balance -= amount;
+                data.Tokens += amount / 10;
+            }
+        }
+
+        static void convertMoney(int tokens)
+        {
+            Console.WriteLine("How many ? 1 Token = 10 money");
+            int amount = int.Parse(Console.ReadLine());
+            if (tokens < amount)
+            {
+                Console.WriteLine("You do not have enough tokens.");
+            }
+            else
+            {
+                data.Balance += amount * 10;
+                data.Tokens -= amount;
             }
         }
     }
